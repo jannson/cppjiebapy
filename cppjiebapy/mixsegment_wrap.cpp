@@ -4940,7 +4940,6 @@ SWIGINTERN void std_vector_Sl_std_string_Sg__insert__SWIG_1(std::vector< std::st
 
 extern int mix_segment_init(char* jieba_dic, char* hmm_model);
 extern bool mix_segment_cut(const std::string& str, StringVector& res);
-extern bool mix_segment_cut_type(const std::string& str, StringVector& res);
 extern void mix_segment_dispose();
 
 
@@ -7832,47 +7831,6 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_mix_segment_cut_type(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  std::string *arg1 = 0 ;
-  StringVector *arg2 = 0 ;
-  int res1 = SWIG_OLDOBJ ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  PyObject * obj0 = 0 ;
-  PyObject * obj1 = 0 ;
-  bool result;
-  
-  if (!PyArg_ParseTuple(args,(char *)"OO:mix_segment_cut_type",&obj0,&obj1)) SWIG_fail;
-  {
-    std::string *ptr = (std::string *)0;
-    res1 = SWIG_AsPtr_std_string(obj0, &ptr);
-    if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "mix_segment_cut_type" "', argument " "1"" of type '" "std::string const &""'"); 
-    }
-    if (!ptr) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "mix_segment_cut_type" "', argument " "1"" of type '" "std::string const &""'"); 
-    }
-    arg1 = ptr;
-  }
-  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_std__vectorT_std__string_std__allocatorT_std__string_t_t,  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "mix_segment_cut_type" "', argument " "2"" of type '" "StringVector &""'"); 
-  }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "mix_segment_cut_type" "', argument " "2"" of type '" "StringVector &""'"); 
-  }
-  arg2 = reinterpret_cast< StringVector * >(argp2);
-  result = (bool)mix_segment_cut_type((std::string const &)*arg1,*arg2);
-  resultobj = SWIG_From_bool(static_cast< bool >(result));
-  if (SWIG_IsNewObj(res1)) delete arg1;
-  return resultobj;
-fail:
-  if (SWIG_IsNewObj(res1)) delete arg1;
-  return NULL;
-}
-
-
 SWIGINTERN PyObject *_wrap_mix_segment_dispose(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   
@@ -7941,7 +7899,6 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"StringVector_swigregister", StringVector_swigregister, METH_VARARGS, NULL},
 	 { (char *)"mix_segment_init", _wrap_mix_segment_init, METH_VARARGS, NULL},
 	 { (char *)"mix_segment_cut", _wrap_mix_segment_cut, METH_VARARGS, NULL},
-	 { (char *)"mix_segment_cut_type", _wrap_mix_segment_cut_type, METH_VARARGS, NULL},
 	 { (char *)"mix_segment_dispose", _wrap_mix_segment_dispose, METH_VARARGS, NULL},
 	 { NULL, NULL, 0, NULL }
 };

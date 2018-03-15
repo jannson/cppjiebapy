@@ -276,10 +276,6 @@ def mix_segment_cut(str, res):
     return _mixsegment.mix_segment_cut(str, res)
 mix_segment_cut = _mixsegment.mix_segment_cut
 
-def mix_segment_cut_type(str, res):
-    return _mixsegment.mix_segment_cut_type(str, res)
-mix_segment_cut_type = _mixsegment.mix_segment_cut_type
-
 def mix_segment_dispose():
     return _mixsegment.mix_segment_dispose()
 mix_segment_dispose = _mixsegment.mix_segment_dispose
