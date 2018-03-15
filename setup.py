@@ -17,7 +17,7 @@ module_jieba = Extension('_mixsegment',
                 define_macros = [('NO_FILTER',None)],
                 extra_compile_args=['--std=c++0x','-O3'],
                 #extra_link_args=['-std=c++0x -O3'],
-                include_dirs=['/usr/include/CppJieba'],
+                include_dirs=['/usr/include/cppjieba'],
                 #libraries=['cppjieba'],
                 #library_dirs=['/usr/lib/CppJieba']
                 )

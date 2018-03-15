@@ -3,21 +3,21 @@
  *
  *       Filename:  mixsegment.cpp
  *
- *    Description:  
+ *    Description:
  *
  *        Version:  1.0
  *        Created:  2013年11月07日 16时17分14秒
  *       Revision:  none
  *       Compiler:  gcc
  *
- *   Organization:  
+ *   Organization:
  *
- * g++ -c -fPIC  mixsegment.cpp -L/usr/lib/CppJieba/ -lcppjieba -o mixsegment.o
+ * g++ -c -fPIC  mixsegment.cpp -L/usr/lib/cppJieba/ -lcppjieba -o mixsegment.o
  * g++ -shared -Wl,-soname,libmixsegment.so -o libmixsegment.so mixsegment.o
  *
  * swig -python -c++  mixsegment.i
  * g++ -c -fPIC  mixsegment.cpp mixsegment_wrap.cxx  -I/usr/local/bin/python/include/python2.7/
- * g++ -shared mixsegment.o mixsegment_wrap.o -L/usr/lib/CppJieba/ -lcppjieba  -o _mixsegment.so
+ * g++ -shared mixsegment.o mixsegment_wrap.o -L/usr/lib/cppjieba/ -lcppjieba  -o _mixsegment.so
  * =====================================================================================
  */
 #include <iostream>
@@ -25,13 +25,13 @@
 #include <cstdlib>
 #include <cstdio>
 #include <assert.h>
-#include "Limonp/ArgvContext.hpp"
+#include "limonp/ArgvContext.hpp"
 #include "MPSegment.hpp"
 #include "HMMSegment.hpp"
 #include "MixSegment.hpp"
 #include "mixsegment.h"
 
-using namespace CppJieba;
+using namespace cppjieba;
 
 class MixSegmentWrap
 {
@@ -46,7 +46,7 @@ public:
 			return false;
 		}
 		this->mix_seg = new MixSegment(_mpSegDict, _hmmSegDict);
-		return this->mix_seg->init();
+        return true;
 	}
 	~MixSegmentWrap()
 	{
@@ -64,7 +64,6 @@ MixSegmentWrap GMIXSEG;
 int mix_segment_init(char* jieba_dic, char* hmm_model);
 
 bool mix_segment_cut(const std::string& str, StringVector& res);
-bool mix_segment_cut_type(const std::string& str, StringVector& res);
 
 void mix_segment_dispose();
 
@@ -85,14 +84,8 @@ bool mix_segment_cut(const std::string& str, vector<string>& res)
 {
 	MixSegment *pseg = GMIXSEG.mix_seg;
 	assert(pseg != NULL);
-	return pseg->cut(str, res);
-}
-
-bool mix_segment_cut_type(const std::string& str, vector<string>& res)
-{
-	MixSegment *pseg = GMIXSEG.mix_seg;
-	assert(pseg != NULL);
-	return pseg->cut_type(str, res);
+	pseg->Cut(str, res);
+    return true;
 }
 
 void mix_segment_dispose()
